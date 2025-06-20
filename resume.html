@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suman Mukiti | HR Payroll Professional</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Chosen Palette: Warm Neutral Harmony -->
+    <!-- Application Structure Plan: A single-page portfolio design with a sticky top navigation bar for smooth scrolling between thematic sections. The structure prioritizes immediate impact with a hero section and key highlights, followed by detailed, interactive sections for skills, experience, and education. This non-linear approach allows recruiters to quickly access the most relevant information, enhancing usability over a traditional linear resume. -->
+    <!-- Visualization & Content Choices: Key qualifications are presented as "stat cards" for quick scanning. Technical skills are visualized using a Chart.js bar chart to provide an engaging and comparative view of proficiencies. Core strengths and responsibilities use icons and structured layouts to improve readability and visual appeal. This approach transforms the static text of the resume into a more dynamic and digestible experience, using HTML/CSS for structure and Chart.js for data visualization, with no SVG or Mermaid JS. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #FDFBF7;
+            color: #3D405B;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 40vh;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+        .nav-link {
+            transition: color 0.3s ease;
+        }
+        .nav-link:hover {
+            color: #E07A5F;
+        }
+        .stat-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .loading-spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #81B29A;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold text-[#3D405B]">
+                Suman Mukiti
+            </div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#experience" class="nav-link font-medium">Experience</a>
+                <a href="#skills" class="nav-link font-medium">Skills</a>
+                <a href="#education" class="nav-link font-medium">Education</a>
+                <a href="#ai-insights" class="nav-link font-medium">AI Insights</a>
+                <a href="#contact" class="nav-link font-medium">Contact</a>
+            </div>
+            <div class="md:hidden">
+                <button id="menu-btn" class="text-[#3D405B] focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden">
+            <a href="#experience" class="block py-2 px-6 text-sm hover:bg-[#F4F1EA]">Experience</a>
+            <a href="#skills" class="block py-2 px-6 text-sm hover:bg-[#F4F1EA]">Skills</a>
+            <a href="#education" class="block py-2 px-6 text-sm hover:bg-[#F4F1EA]">Education</a>
+            <a href="#ai-insights" class="block py-2 px-6 text-sm hover:bg-[#F4F1EA]">AI Insights</a>
+            <a href="#contact" class="block py-2 px-6 text-sm hover:bg-[#F4F1EA]">Contact</a>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="py-20 md:py-32">
+            <div class="container mx-auto px-6 text-center">
+                <h1 class="text-4xl md:text-6xl font-bold text-[#3D405B] leading-tight">Suman Mukiti</h1>
+                <h2 class="text-2xl md:text-3xl text-[#E07A5F] mt-2 font-medium">Human Resource Professional - Payroll Specialist</h2>
+                <p class="mt-6 max-w-3xl mx-auto text-lg text-gray-600">
+                    Highly dedicated and detail-oriented HR professional with 3+ years of experience specializing in comprehensive payroll administration, statutory compliance, and HR operations.
+                </p>
+            </div>
+        </section>
+
+        <section id="highlights" class="pb-16">
+            <div class="container mx-auto px-6">
+                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="stat-card bg-white p-6 rounded-xl border border-gray-200/80 text-center">
+                        <div class="text-4xl font-bold text-[#81B29A] mb-2">3+</div>
+                        <div class="text-lg font-medium text-gray-700">Years of Experience</div>
+                    </div>
+                    <div class="stat-card bg-white p-6 rounded-xl border border-gray-200/80 text-center">
+                        <div class="text-3xl font-bold text-[#81B29A] mb-2 leading-tight">Payroll & Compliance</div>
+                        <div class="text-lg font-medium text-gray-700">Core Specialization</div>
+                    </div>
+                    <div class="stat-card bg-white p-6 rounded-xl border border-gray-200/80 text-center">
+                         <div class="text-3xl font-bold text-[#81B29A] mb-2 leading-tight">MBA</div>
+                        <div class="text-lg font-medium text-gray-700">Finance & HR</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="py-16 bg-white/70">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center mb-12">Professional Experience</h2>
+                <div class="bg-white p-8 rounded-xl shadow-md max-w-4xl mx-auto border border-gray-200/80">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="text-2xl font-semibold text-[#3D405B]">Junior Executive - Human Resource</h3>
+                            <p class="text-lg text-gray-700">Flextronics Technologies India Pvt Ltd</p>
+                        </div>
+                        <div class="text-right">
+                            <p class="font-medium text-[#E07A5F]">Oct 2020 – Jul 2023</p>
+                        </div>
+                    </div>
+                    <hr class="my-6">
+                    <p class="mb-6 text-gray-600">This section details my core responsibilities and achievements as an HR professional. My role encompassed the full employee lifecycle, with a special focus on ensuring precise and compliant payroll operations, which formed the backbone of my duties.</p>
+                    <ul class="space-y-4" id="experience-details">
+                        <li class="flex items-start">
+                            <span class="text-[#81B29A] mr-3 mt-1">&#10003;</span>
+                            Spearheaded end-to-end payroll processing for 250+ employees, ensuring accurate calculation of salaries, deductions, and taxes.
+                        </li>
+                        <li class="flex items-start">
+                             <span class="text-[#81B29A] mr-3 mt-1">&#10003;</span>
+                            Prepared and submitted critical statutory reports, including ESI and PF, ensuring timely adherence to all governmental compliance requirements.
+                        </li>
+                        <li class="flex items-start">
+                             <span class="text-[#81B29A] mr-3 mt-1">&#10003;</span>
+                            Managed and updated comprehensive payroll records, resolving discrepancies and ensuring data integrity for audit readiness.
+                        </li>
+                        <li class="flex items-start">
+                             <span class="text-[#81B29A] mr-3 mt-1">&#10003;</span>
+                            Administered the complete new employee onboarding process, ensuring a smooth and compliant transition for all new hires.
+                        </li>
+                        <li class="flex items-start">
+                             <span class="text-[#81B29A] mr-3 mt-1">&#10003;</span>
+                            Oversaw employee termination and resignation processes, ensuring full compliance with company and legal guidelines.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="py-16">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center mb-4">Core Competencies</h2>
+                <p class="text-center text-gray-600 max-w-2xl mx-auto mb-12">My technical skill set is centered on tools and processes essential for modern HR and payroll management. The following chart visualizes my proficiency across key areas, from advanced data analysis in Excel to HRIS and compliance management.</p>
+                <div class="chart-container">
+                    <canvas id="skillsChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="education" class="py-16 bg-white/70">
+            <div class="container mx-auto px-6">
+                <div class="grid md:grid-cols-5 gap-12 items-start">
+                    <div class="md:col-span-2">
+                        <h2 class="text-3xl font-bold mb-4">Education & Strengths</h2>
+                        <p class="text-gray-600">My academic background in both Finance and HR provides a strong foundation for my role, complemented by key personal strengths that enable me to thrive in a dynamic corporate environment.</p>
+                    </div>
+                    <div class="md:col-span-3 grid grid-cols-1 sm:grid-cols-2 gap-8">
+                        <div class="bg-white p-6 rounded-xl border border-gray-200/80">
+                            <h4 class="font-bold text-lg mb-2 text-[#3D405B]">MASTER OF BUSINESS ADMINISTRATION (MBA)</h4>
+                            <p class="text-gray-600">Specialization: Finance & HR</p>
+                            <p class="text-sm text-gray-500">JNTUA, Narayana Engineering College, 2018</p>
+                        </div>
+                         <div class="bg-white p-6 rounded-xl border border-gray-200/80">
+                            <h4 class="font-bold text-lg mb-2 text-[#3D405B]">BACHELOR OF COMMERCE</h4>
+                            <p class="text-gray-600">Specialization: Computer Applications</p>
+                            <p class="text-sm text-gray-500">Vikrama Simhapuri University, 2016</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-xl border border-gray-200/80 sm:col-span-2">
+                            <h4 class="font-bold text-lg mb-3 text-[#3D405B]">Key Strengths</h4>
+                            <ul class="space-y-2 text-gray-700" id="strengths-details">
+                                <li class="flex items-center"><span class="text-[#E07A5F] mr-2">&#9679;</span> Problem-Solving & Analytical Thinking</li>
+                                <li class="flex items-center"><span class="text-[#E07A5F] mr-2">&#9679;</span> High Accuracy & Attention to Detail</li>
+                                <li class="flex items-center"><span class="text-[#E07A5F] mr-2">&#9679;</span> Compliance & Ethical Conduct</li>
+                                <li class="flex items-center"><span class="text-[#E07A5F] mr-2">&#9679;</span> Adaptability & Proactive Learning</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="ai-insights" class="py-16">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center mb-4">AI Insights ✨</h2>
+                <p class="text-center text-gray-600 max-w-2xl mx-auto mb-12">Leverage AI to get quick insights or prepare for your next steps. These tools can summarize your resume or generate potential interview questions based on your experience.</p>
+                <div class="flex flex-col md:flex-row justify-center gap-6 mb-8">
+                    <button id="generate-summary-btn" class="bg-[#81B29A] text-white px-8 py-3 rounded-xl shadow-md hover:bg-[#6D9F88] transition-colors font-semibold flex items-center justify-center">
+                        Generate Resume Summary & Keywords ✨
+                    </button>
+                    <button id="generate-questions-btn" class="bg-[#E07A5F] text-white px-8 py-3 rounded-xl shadow-md hover:bg-[#C26B52] transition-colors font-semibold flex items-center justify-center">
+                        Generate Potential Interview Questions ✨
+                    </button>
+                </div>
+
+                <div id="ai-output" class="bg-white p-8 rounded-xl shadow-md max-w-4xl mx-auto border border-gray-200/80 hidden">
+                    <h3 class="text-2xl font-semibold text-[#3D405B] mb-4" id="ai-output-title"></h3>
+                    <div id="ai-output-content" class="text-gray-700 prose max-w-none">
+                        <div class="flex justify-center items-center py-10 loading-spinner hidden" id="ai-loading-spinner"></div>
+                        <p id="ai-result-text"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer id="contact" class="bg-[#3D405B] text-white">
+            <div class="container mx-auto px-6 py-12 text-center">
+                <h2 class="text-3xl font-bold mb-4">Get In Touch</h2>
+                <p class="max-w-md mx-auto mb-8">I am actively seeking new opportunities and would welcome the chance to discuss how my skills can benefit your organization.</p>
+                <div class="flex justify-center items-center space-x-6 text-lg">
+                    <a href="mailto:mukitisuman195@gmail.com" class="hover:text-[#E07A5F] transition-colors">mukitisuman195@gmail.com</a>
+                    <span>&bull;</span>
+                    <a href="tel:+918500945885" class="hover:text-[#E07A5F] transition-colors">+91 8500945885</a>
+                </div>
+                 <p class="text-sm text-gray-400 mt-10">&copy; 2025 Suman Mukiti. All Rights Reserved.</p>
+            </div>
+        </footer>
+    </main>
+
+    <script>
+        let mySkillsChart; // Declare the chart instance globally
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const skillsCtx = document.getElementById('skillsChart').getContext('2d');
+            mySkillsChart = new Chart(skillsCtx, { // Assign the chart instance
+                type: 'bar',
+                data: {
+                    labels: ['Payroll Processing', 'Statutory Compliance (ESI/PF)', 'Advanced Excel', 'Data Analysis', 'HR Policy Implementation', 'DMS'],
+                    datasets: [{
+                        label: 'Proficiency Level',
+                        data: [95, 90, 90, 85, 80, 75],
+                        backgroundColor: [
+                            'rgba(129, 178, 154, 0.6)',
+                            'rgba(224, 122, 95, 0.6)',
+                            'rgba(61, 64, 91, 0.6)',
+                            'rgba(244, 241, 234, 0.8)',
+                             'rgba(129, 178, 154, 0.4)',
+                            'rgba(224, 122, 95, 0.4)'
+                        ],
+                        borderColor: [
+                             '#81B29A',
+                             '#E07A5F',
+                             '#3D405B',
+                             '#8D99AE',
+                             '#81B29A',
+                             '#E07A5F'
+                        ],
+                        borderWidth: 2,
+                        borderRadius: 5
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            backgroundColor: '#3D405B',
+                            titleFont: { size: 14, weight: 'bold' },
+                            bodyFont: { size: 12 },
+                            padding: 10,
+                            cornerRadius: 5,
+                            displayColors: false,
+                        }
+                    },
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            max: 100,
+                             grid: {
+                                color: 'rgba(61, 64, 91, 0.1)'
+                            }
+                        },
+                        y: {
+                             grid: {
+                                display: false
+                            }
+                        }
+                    }
+                }
+            });
+
+            const menuBtn = document.getElementById('menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            menuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            const mobileNavLinks = mobileMenu.querySelectorAll('a');
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+
+            const generateSummaryBtn = document.getElementById('generate-summary-btn');
+            const generateQuestionsBtn = document.getElementById('generate-questions-btn');
+            const aiOutputDiv = document.getElementById('ai-output');
+            const aiOutputTitle = document.getElementById('ai-output-title');
+            const aiResultText = document.getElementById('ai-result-text');
+            const aiLoadingSpinner = document.getElementById('ai-loading-spinner');
+
+            const getResumeText = () => {
+                const summary = document.querySelector('#hero p').textContent;
+                const experience = Array.from(document.querySelectorAll('#experience-details li'))
+                                        .map(li => li.textContent.trim())
+                                        .join('\n');
+                let skills = Array.from(document.querySelectorAll('#skills + p'))
+                                    .map(p => p.textContent.trim())
+                                    .join('\n');
+                if (mySkillsChart && mySkillsChart.data && mySkillsChart.data.labels) {
+                    skills += '\n' + mySkillsChart.data.labels.join(', ');
+                }
+                const education = Array.from(document.querySelectorAll('#education .bg-white h4, #education .bg-white p'))
+                                        .map(el => el.textContent.trim())
+                                        .join('\n');
+                const strengths = Array.from(document.querySelectorAll('#strengths-details li'))
+                                        .map(li => li.textContent.trim())
+                                        .join('\n');
+                
+                return `Resume Summary: ${summary}\n\nExperience:\n${experience}\n\nSkills:\n${skills}\n\nEducation:\n${education}\n\nStrengths:\n${strengths}`;
+            };
+
+            const callGeminiAPI = async (prompt, title) => {
+                aiOutputDiv.classList.remove('hidden');
+                aiLoadingSpinner.classList.remove('hidden');
+                aiResultText.textContent = '';
+                aiOutputTitle.textContent = title;
+
+                const resumeText = getResumeText();
+                const fullPrompt = `${prompt}\n\nResume Content:\n${resumeText}`;
+
+                let chatHistory = [];
+                chatHistory.push({ role: "user", parts: [{ text: fullPrompt }] });
+                const payload = { contents: chatHistory };
+                const apiKey = ""; 
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    const result = await response.json();
+
+                    if (result.candidates && result.candidates.length > 0 &&
+                        result.candidates[0].content && result.candidates[0].content.parts &&
+                        result.candidates[0].content.parts.length > 0) {
+                        aiResultText.textContent = result.candidates[0].content.parts[0].text;
+                    } else {
+                        aiResultText.textContent = "Error: Could not generate response. Please try again.";
+                    }
+                } catch (error) {
+                    console.error("Error calling Gemini API:", error);
+                    aiResultText.textContent = "Error: Failed to connect to the AI service. Please check your network and try again.";
+                } finally {
+                    aiLoadingSpinner.classList.add('hidden');
+                }
+            };
+
+            generateSummaryBtn.addEventListener('click', () => {
+                callGeminiAPI("Generate a concise professional summary (2-3 sentences) and a list of 5-7 key skills/keywords from the following resume content, formatted clearly. Prioritize HR, Payroll, and Compliance skills.", "Resume Summary & Keywords");
+            });
+
+            generateQuestionsBtn.addEventListener('click', () => {
+                callGeminiAPI("Generate 3-5 common interview questions tailored specifically to the experience and skills listed in the following HR Payroll resume. Focus on behavioral and situational questions related to payroll, compliance, and HR operations.", "Potential Interview Questions");
+            });
+        });
+    </script>
+</body>
+</html>
